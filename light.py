@@ -7,7 +7,7 @@ from time import sleep
 class Light():
     """ a convenience class to control one Philips Hue light using the phue library ref: https://github.com/studioimaginaire/phue
     """
-    def __init__(self, bridge_name = "0017887f0766", bridge_ip=None, light_id=1):
+    def __init__(self, bridge_name = None, bridge_ip=None, light_id=1):
         bridge_ip = self.find_bridge_ip(bridge_name) if bridge_ip is None else bridge_ip
         self.b = Bridge(bridge_ip)
         self.b.connect()
@@ -56,7 +56,7 @@ class Light():
 
 
 if __name__=="__main__":
-    l = Light()
+    l = Light(bridge_name="bridge_name")
     l.on()
     l.brightness(255)
     l.off()
